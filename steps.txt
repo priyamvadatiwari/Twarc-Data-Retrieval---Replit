@@ -1,0 +1,43 @@
+go to replit, create a new python replit,
+Install package Twarc
+Install Package twarc-csv
+
+Now go to Shell next to console: Run the following commands.
+
+keep your access key, secretkey and token handy. you will get prompt to enter those keys. 
+Run below commands
+
+1. twarc2 configure
+Once prompted, enter access key, secretkey and token. 
+
+2. It will ask you to authenticate through twitter link. Complete the authentication by clicking on the link. 
+
+3. Run the search command
+twarc2 search '#education'   #you can choose your own keyword. 
+
+break it by pressing Ctrl + C since there will be too many commands. 
+
+****Building a more specific twarc v2 full archive query**
+
+#It will log everything related to below hashtag
+option1: 
+twarc2 search '#education -is:retweet' --start-time 2021-01-01 --end-time 2022-01-31 --limit 5000 --archive
+
+option2: save to jsonl file. 
+
+twarc2 search '#education' --start-time 2021-01-01 --end-time 2022-01-31 --limit 5000 tweets.jsonl
+
+Flatten the file: 
+twarc2 flatten tweets.jsonl flattened-tweets.jsonl
+
+#We will use twarc-csv to conver jsonl file to csv to make it readable in a dataframe and easy to perform our analysis. 
+
+twarc2 csv tweets.jsonl tweets.csv
+
+Once you have the csv file, load the csv in to dataframe. 
+
+@https://github.com/jeffcsauer  Thanks for helping me figure this out. We invested 2-3 days in tweepy before getting hold of Twarc!
+
+
+
+
